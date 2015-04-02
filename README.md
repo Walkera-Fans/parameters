@@ -20,5 +20,6 @@ Momentan helfen wir niemandem, diese Datei zu nutzen. Dafür sind die Dateien no
 
 Wer kein Experte ist, sollte auf keine der Dateien hier nutzen.
 Wer sich auskennt, kann die Dateien natürlich einsetzen, aber wir sind nicht dazu bereit, weiterzuhelfen, wenn dabei jeglicher Schaden entstanden ist.
+Bitte sichert die Originaleinstellungen, bevor ihr andere Einstellungen ausprobiert.
 
 Dieses Projekt ist noch im Aufbau.
