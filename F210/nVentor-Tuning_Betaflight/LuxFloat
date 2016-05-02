@@ -35,9 +35,7 @@ feature -CHANNEL_FORWARDING
 feature -TRANSPONDER
 feature RX_PPM
 feature VBAT
-feature MOTOR_STOP
 feature ONESHOT125
-feature BLACKBOX
 
 
 # beeper
@@ -128,8 +126,8 @@ color 15 0,0,0
 aux 0 0 3 1300 1700
 aux 1 1 0 1700 2100
 aux 2 2 0 1300 1700
-aux 3 12 1 1500 2100
-aux 4 0 0 900 900
+aux 3 27 3 1300 1700
+aux 4 12 1 1500 2100
 aux 5 0 0 900 900
 aux 6 0 0 900 900
 aux 7 0 0 900 900
@@ -353,7 +351,7 @@ set p_alt = 50
 set i_alt = 0
 set d_alt = 0
 set p_level = 63
-set i_level = 20
+set i_level = 63
 set d_level = 100
 set p_vel = 0
 set i_vel = 0
@@ -368,8 +366,8 @@ set rc_expo = 75
 set rc_yaw_expo = 25
 set thr_mid = 30
 set thr_expo = 0
-set roll_rate = 100
-set pitch_rate = 100
+set roll_rate = 90
+set pitch_rate = 90
 set yaw_rate = 90
 set tpa_rate = 37
 set tpa_breakpoint = 1300
