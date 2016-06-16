@@ -35,6 +35,7 @@ feature -CHANNEL_FORWARDING
 feature -TRANSPONDER
 feature RX_PPM
 feature VBAT
+feature INFLIGHT_ACC_CAL
 feature ONESHOT125
 
 
@@ -200,7 +201,7 @@ set use_oneshot42 = OFF
 set use_multishot = OFF
 set motor_pwm_rate = 400
 set servo_pwm_rate = 50
-set disarm_kill_switch = OFF
+set disarm_kill_switch = ON
 set gyro_cal_on_first_arm = OFF
 set auto_disarm_delay = 5
 set small_angle = 25
@@ -247,7 +248,7 @@ set align_board_pitch = 0
 set align_board_yaw = 180
 set max_angle_inclination = 440
 set gyro_lpf = OFF
-set gyro_sync_denom = 8
+set gyro_sync_denom = 4
 set gyro_lowpass_hz =  80.000
 set moron_threshold = 32
 set imu_dcm_kp = 4000
