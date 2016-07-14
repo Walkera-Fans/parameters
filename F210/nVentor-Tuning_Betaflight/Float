@@ -1,7 +1,5 @@
-# dump
-
 # version
-# BetaFlight/SPRACINGF3 2.6.1 Apr  8 2016 / 22:45:22 (bdaf8ec)
+# BetaFlight/SPRACINGF3 2.9.0 Jun 25 2016 / 23:43:54 (3d9b180)
 # dump master
 
 # mixer
@@ -33,10 +31,13 @@ feature -ONESHOT125
 feature -BLACKBOX
 feature -CHANNEL_FORWARDING
 feature -TRANSPONDER
+feature -AIRMODE
+feature -SUPEREXPO_RATES
 feature RX_PPM
 feature VBAT
 feature INFLIGHT_ACC_CAL
 feature ONESHOT125
+feature SUPEREXPO_RATES
 
 
 # beeper
@@ -183,22 +184,23 @@ set min_check = 1116
 set max_check = 1900
 set rssi_channel = 0
 set rssi_scale = 30
+set rc_smooth_interval_ms = 0
 set rssi_ppm_invert = OFF
 set input_filtering_mode = OFF
-set rc_smoothing = OFF
 set roll_yaw_cam_mix_degrees = 0
 set max_aux_channels = 6
 set debug_mode = NONE
 set min_throttle = 1140
 set max_throttle = 1900
 set min_command = 1000
+set anti_desync_power_step = 0
 set servo_center_pulse = 1500
 set 3d_deadband_low = 1406
 set 3d_deadband_high = 1514
 set 3d_neutral = 1460
 set 3d_deadband_throttle = 50
-set use_oneshot42 = OFF
-set use_multishot = OFF
+set unsynced_fast_pwm = OFF
+set fast_pwm_protocol = ONESHOT125
 set motor_pwm_rate = 400
 set servo_pwm_rate = 50
 set disarm_kill_switch = ON
@@ -246,26 +248,25 @@ set align_mag = DEFAULT
 set align_board_roll = 0
 set align_board_pitch = 0
 set align_board_yaw = 180
-set max_angle_inclination = 440
+set max_angle_inclination = 700
 set gyro_lpf = OFF
-set gyro_sync_denom = 4
-set gyro_lowpass_hz =  80.000
+set gyro_sync_denom = 3
+set gyro_lowpass = 80
 set moron_threshold = 32
 set imu_dcm_kp = 4000
 set imu_dcm_ki = 200
 set alt_hold_deadband = 40
 set alt_hold_fast_change = ON
-set deadband = 0
-set yaw_deadband = 6
+set deadband = 3
+set yaw_deadband = 2
 set throttle_correction_value = 0
 set throttle_correction_angle = 800
 set yaw_control_direction = 1
 set yaw_motor_direction = 1
-set yaw_jump_prevention_limit = 200
 set tri_unarmed_servo = ON
 set servo_lowpass_freq = 400
 set servo_lowpass_enable = OFF
-set super_expo_factor = 30
+set airmode_activate_throttle = 1350
 set failsafe_delay = 10
 set failsafe_off_delay = 10
 set failsafe_throttle = 1000
@@ -286,8 +287,8 @@ set baro_tab_size = 21
 set baro_noise_lpf =  0.600
 set baro_cf_vel =  0.985
 set baro_cf_alt =  0.965
-set baro_hardware = AUTO
-set mag_hardware = AUTO
+set baro_hardware = NONE
+set mag_hardware = NONE
 set mag_declination = 0
 set pid_process_denom = 1
 set blackbox_rate_num = 1
@@ -296,6 +297,7 @@ set blackbox_device = SPIFLASH
 set magzero_x = 0
 set magzero_y = 0
 set magzero_z = 0
+set ledstrip_visual_beeper = OFF
 
 # rxfail
 rxfail 0 a
@@ -320,7 +322,6 @@ rxfail 17 h
 # profile
 profile 0
 ############################# PROFILE VALUES ####################################
-profile 0
 
 set gps_pos_p = 15
 set gps_pos_i = 0
@@ -331,28 +332,28 @@ set gps_posr_d = 53
 set gps_nav_p = 25
 set gps_nav_i = 33
 set gps_nav_d = 83
-set yaw_p_limit = 400
 set pid_delta_method = MEASUREMENT
-set dterm_lowpass_hz =  70.000
-set dterm_average_count = 4
-set iterm_reset_degrees = 200
-set yaw_iterm_reset_degrees = 50
-set yaw_lowpass_hz =  70.000
-set pid_controller = LUX
-set p_pitch = 50
+set yaw_p_limit = 400
+set dterm_lowpass = 70
+set dynamic_iterm = ON
+set iterm_ignore_threshold = 180
+set yaw_iterm_ignore_threshold = 35
+set yaw_lowpass = 80
+set pid_controller = FLOAT
+set p_pitch = 56
 set i_pitch = 80
-set d_pitch = 55
-set p_roll = 38
-set i_roll = 55
-set d_roll = 35
-set p_yaw = 65
-set i_yaw = 80
-set d_yaw = 20
+set d_pitch = 35
+set p_roll = 44
+set i_roll = 70
+set d_roll = 22
+set p_yaw = 70
+set i_yaw = 60
+set d_yaw = 0
 set p_alt = 50
 set i_alt = 0
 set d_alt = 0
-set p_level = 63
-set i_level = 63
+set p_level = 100
+set i_level = 60
 set d_level = 100
 set p_vel = 0
 set i_vel = 0
@@ -362,13 +363,14 @@ rateprofile 0
 # rateprofile
 rateprofile 0
 
-set rc_rate = 104
-set rc_expo = 75
-set rc_yaw_expo = 25
+set rc_rate = 100
+set rc_rate_yaw = 100
+set rc_expo = 70
+set rc_yaw_expo = 70
 set thr_mid = 30
 set thr_expo = 0
-set roll_rate = 90
-set pitch_rate = 90
-set yaw_rate = 90
-set tpa_rate = 37
-set tpa_breakpoint = 1300
+set roll_rate = 80
+set pitch_rate = 80
+set yaw_rate = 80
+set tpa_rate = 30
+set tpa_breakpoint = 1400
